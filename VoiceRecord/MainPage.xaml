@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAudioRecorderUI.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+
+            <Label
+                Text="MAUI Audio Recorder"
+                Style="{StaticResource Headline}"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="StatusLabel"
+                Text="Ready"
+                FontSize="18"
+                HorizontalOptions="Center"
+                TextColor="Gray" />
+
+            <Button
+                x:Name="PermissionsBtn"
+                Text="Permissions"
+                BackgroundColor="Red"
+                TextColor="White"
+                Clicked="OnPermissionsClicked"
+                WidthRequest="200" />
+
+            <Button
+                x:Name="RecordBtn"
+                Text="Start Recording"
+                Clicked="OnRecordClicked"
+                WidthRequest="200" />
+
+            <Button
+                x:Name="StopBtn"
+                Text="Stop"
+                IsEnabled="False"
+                Clicked="OnStopClicked"
+                WidthRequest="200" />
+
+            <Button
+                x:Name="PlayBtn"
+                Text="Play Back"
+                IsEnabled="False"
+                Clicked="OnPlayClicked"
+                WidthRequest="200" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

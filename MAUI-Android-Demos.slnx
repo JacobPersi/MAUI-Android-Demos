@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Shared/Shared.csproj" />
+  <Project Path="VoiceRecord/VoiceRecord.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
