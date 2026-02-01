@@ -51,6 +51,21 @@
                 Clicked="OnPlayClicked"
                 WidthRequest="200" />
 
+            <Button
+                x:Name="TranscribeBtn"
+                Text="Transcribe"
+                IsEnabled="False"
+                Clicked="OnTranscribeClicked"
+                WidthRequest="200" />
+
+            <Editor
+                x:Name="TranscriptionResult"
+                Placeholder="Transcription will appear here..."
+                AutoSize="TextChanges"
+                IsReadOnly="True"
+                MinimumHeightRequest="100"
+                HorizontalOptions="Fill" />
+
         </VerticalStackLayout>
     </ScrollView>
 

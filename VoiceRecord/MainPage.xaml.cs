@@ -6,6 +6,7 @@ public partial class MainPage : ContentPage
 {
     private readonly AudioService _audioService = new();
     private readonly PermissionService _permissionService = new();
+    private readonly TranscriptionService _transcriptionService = new();
 
     public MainPage()
     {
@@ -64,11 +65,40 @@ public partial class MainPage : ContentPage
         RecordBtn.IsEnabled = true;
         StopBtn.IsEnabled = false;
         PlayBtn.IsEnabled = true;
+        TranscribeBtn.IsEnabled = true;
     }
 
     private void OnPlayClicked(object? sender, EventArgs e)
     {
         _audioService.StartPlayback();
         StatusLabel.Text = "Playing...";
+    }
+
+    private async void OnTranscribeClicked(object? sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(_audioService.FilePath))
+        {
+            StatusLabel.Text = "Error: No audio file found.";
+            return;
+        }
+
+        StatusLabel.Text = "Transcribing (this may take a moment)...";
+        TranscribeBtn.IsEnabled = false;
+        TranscriptionResult.Text = "";
+
+        try
+        {
+            var result = await _transcriptionService.TranscribeAsync(_audioService.FilePath);
+            TranscriptionResult.Text = result;
+            StatusLabel.Text = "Transcription complete.";
+        }
+        catch (Exception ex)
+        {
+            StatusLabel.Text = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            TranscribeBtn.IsEnabled = true;
+        }
     }
 }
